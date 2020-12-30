@@ -2,6 +2,7 @@
 # setuid screen v4.5.0 local root exploit
 # abuses ld.so.preload overwriting to get root.
 # bug: https://lists.gnu.org/archive/html/screen-devel/2017-01/msg00025.html
+# Author : Hoa Nguyen
 
 use warnings;
 use strict;
